@@ -1,8 +1,7 @@
 # GerenciadorEmprestimoLIvros
 
-Gerenciador de Empréstimo de Livros
-
 Este é um projeto Java para gerenciar empréstimos de livros e revistas em uma biblioteca. O código é organizado em classes que representam entidades como Livro, Revista, Funcionário e Cliente. O objetivo principal é demonstrar o funcionamento do sistema de empréstimos através da classe GerenciadorEmprestimoLivros.
+
 Estrutura do Código
 
 GerenciadorEmprestimoLivros.java: Este arquivo contém o método main onde são criadas instâncias das entidades e realizadas operações de empréstimo e devolução.
