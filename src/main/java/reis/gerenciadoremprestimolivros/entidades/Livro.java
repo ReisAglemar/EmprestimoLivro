@@ -2,11 +2,11 @@ package reis.gerenciadoremprestimolivros.entidades;
 
 public final class Livro extends Item {
 
-    private int coletanea;
+    private int coletanea;    
 
     public Livro(int coletanea, String titulo, String autor, String editora, String isbn, int paginas, int ano) {
         super(titulo, autor, editora, isbn, paginas, ano);
-        this.coletanea = coletanea;
+        this.coletanea = coletanea;        
     }
 
     public int getColetanea() {
@@ -17,7 +17,7 @@ public final class Livro extends Item {
         this.coletanea = coletanea;
     }
 
-    @Override
+       @Override
     public String toString() {
         return "Livro{"
                 + super.toString()

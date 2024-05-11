@@ -4,6 +4,7 @@ public class Item {
 
     protected String titulo, autor, editora, isbn;
     protected int paginas, ano;
+    protected boolean disponivel;
 
     public Item(String titulo, String autor, String editora, String isbn, int paginas, int ano) {
         this.titulo = titulo;
@@ -12,6 +13,7 @@ public class Item {
         this.isbn = isbn;
         this.paginas = paginas;
         this.ano = ano;
+        this.disponivel = true;
     }
 
     public String getTitulo() {
@@ -60,6 +62,14 @@ public class Item {
 
     public void setAno(int ano) {
         this.ano = ano;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 
     @Override

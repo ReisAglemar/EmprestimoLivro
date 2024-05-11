@@ -54,9 +54,11 @@ public class Emprestimo implements Acoes {
     @Override
     public String emprestarLivro(Livro livro, Cliente cliente, Funcionario funcionario, String dataHora) {
 
-        String comprovante = """
+        if (livro.isDisponivel()) {
+
+            String comprovante = """
                            
-                        \t ================ COMPROVANTE ================
+                        \t ================ EMPRÉSTIMO ================
                                 
                         \t   1- Livro: %s
                                     
@@ -68,18 +70,26 @@ public class Emprestimo implements Acoes {
                            
                         \t+--------------------------------------------+  
                         """.formatted(livro.getTitulo(), cliente.getNome(),
-                funcionario.getNome(), dataHora);
+                    funcionario.getNome(), dataHora);
 
-        return comprovante;
+            livro.setDisponivel(false);
 
+            return comprovante;
+
+        } else {
+
+            return livro.getTitulo() + ", já foi emprestado. Aguarde ser devolvido!";
+        }
     }
 
     @Override
     public String emprestarRevista(Revista revista, Cliente cliente, Funcionario funcionario, String dataHora) {
 
-        String comprovante = """
+        if (revista.isDisponivel()) {
+
+            String comprovante = """
                            
-                        \t ================ COMPROVANTE ================
+                        \t ================ EMPRÉSTIMO ================
                                 
                         \t   1- Revista: %s
                                     
@@ -91,17 +101,26 @@ public class Emprestimo implements Acoes {
                            
                         \t+--------------------------------------------+  
                         """.formatted(revista.getTitulo(), cliente.getNome(),
-                funcionario.getNome(), dataHora);
+                    funcionario.getNome(), dataHora);
 
-        return comprovante;
+            revista.setDisponivel(false);
+
+            return comprovante;
+
+        } else {
+
+            return revista.getTitulo() + ", já foi emprestado. Aguarde ser devolvido!";
+        }
     }
 
     @Override
     public String devolverLivro(Livro livro, Cliente cliente, Funcionario funcionario, String dataHora) {
 
-        String comprovante = """
+        if (!livro.isDisponivel()) {
+
+            String comprovante = """
                            
-                        \t ================ COMPROVANTE ================
+                        \t ================ DEVOLUÇÃO ================
                                 
                         \t   1- Livro: %s
                                     
@@ -113,17 +132,26 @@ public class Emprestimo implements Acoes {
                            
                         \t+--------------------------------------------+  
                         """.formatted(livro.getTitulo(), cliente.getNome(),
-                funcionario.getNome(), dataHora);
+                    funcionario.getNome(), dataHora);
 
-        return comprovante;
+            livro.setDisponivel(true);
+
+            return comprovante;
+
+        } else {
+
+            return livro.getTitulo() + " não está emprestado, impossível devolver!";
+        }
     }
 
     @Override
     public String devolverRevista(Revista revista, Cliente cliente, Funcionario funcionario, String dataHora) {
 
-        String comprovante = """
+        if (!revista.isDisponivel()) {
+
+            String comprovante = """
                            
-                        \t ================ COMPROVANTE ================
+                        \t ================ DEVOLUÇÃO ================
                                 
                         \t   1- Revista: %s
                                     
@@ -135,9 +163,16 @@ public class Emprestimo implements Acoes {
                            
                         \t+--------------------------------------------+  
                         """.formatted(revista.getTitulo(), cliente.getNome(),
-                funcionario.getNome(), dataHora);
+                    funcionario.getNome(), dataHora);
 
-        return comprovante;
+            revista.setDisponivel(true);
+
+            return comprovante;
+
+        } else {
+
+            return revista.getTitulo() + " não está emprestada, impossível devolver!";
+        }
     }
 
     @Override

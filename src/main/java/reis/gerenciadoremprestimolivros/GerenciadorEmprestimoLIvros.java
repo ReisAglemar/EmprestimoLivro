@@ -50,5 +50,15 @@ public class GerenciadorEmprestimoLIvros {
                         funcionario[1], dataHora.getDataFormatada())
         );
 
+        System.out.println(
+                emprestimo.devolverLivro(livro[1], cliente[1],
+                        funcionario[1], dataHora.getDataFormatada())
+        );
+
+        System.out.println(
+                emprestimo.devolverRevista(revista[1], cliente[0],
+                        funcionario[0], dataHora.getDataFormatada())
+        );
+
     }
 }
